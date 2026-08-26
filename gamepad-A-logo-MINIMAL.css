@@ -1,49 +1,46 @@
 /* ==========================================
-   GAMEPAD VIEWER - SKIN NEON PURPLE & CYAN (FIXED)
+   GAMEPAD VIEWER - SKIN NEON PURPLE (GARANTIZADO)
+   Estrategia: Filtros globales + Superposiciones
    ========================================== */
 
-:root {
-    --neon-purple: #6d28d9;
-    --neon-purple-dark: #2e1065;
-    --neon-cyan: #06b6d4;
-    --neon-cyan-glow: rgba(6, 182, 212, 0.8);
-}
-
-/* 1. CUERPO DEL MANDO (Morado Oscuro) */
-.controller.ds4 .body, 
-.controller.ds4 .grip-left, 
-.controller.ds4 .grip-right,
-.controller.ds4 .face {
-    background-color: var(--neon-purple-dark) !important;
-    fill: var(--neon-purple-dark) !important; /* Para SVGs */
-}
-
-/* Borde exterior neón (simulado con drop-shadow en el contenedor principal) */
+/* 1. TEÑIR TODO EL MANDO DE MORADO OSCURO 
+   Usamos filter: sepia + hue-rotate para cambiar el color base del SVG/Imagen original
+   sin romper la estructura. */
 .controller.ds4 {
-    filter: drop-shadow(0 0 8px var(--neon-cyan));
+    /* Esto convierte los grises/blancos originales en tonos morados */
+    filter: sepia(1) hue-rotate(240deg) saturate(3) brightness(0.6) drop-shadow(0 0 5px #06b6d4);
 }
 
-/* 2. LIGHTBAR (Barra superior Cian) */
+/* 2. ACLARAR ZONAS ESPECÍFICAS (Grips, Sticks) para dar profundidad */
+.controller.ds4 .grip-left,
+.controller.ds4 .grip-right,
+.controller.ds4 .stick {
+    filter: brightness(1.4) !important; /* Más claros que el cuerpo */
+}
+
+/* 3. LIGHTBAR (Barra superior Cian Neón) */
 .controller.ds4 .lightbar {
-    background: var(--neon-cyan) !important;
-    box-shadow: 0 0 15px var(--neon-cyan) !important;
+    background: #06b6d4 !important;
+    box-shadow: 0 0 15px #06b6d4, 0 0 30px #06b6d4 !important;
+    opacity: 1 !important;
 }
 
-/* 3. TOUCHPAD Y LOGO "A" */
+/* 4. TOUCHPAD Y LOGO "A" */
 .controller.ds4 .touchpad {
-    background-color: #050505 !important;
-    border: 2px solid var(--neon-cyan) !important;
+    background-color: #050505 !important; /* Fondo negro puro */
+    border: 2px solid #06b6d4 !important;
     position: relative;
+    filter: none !important; /* Quitamos el filtro morado del touchpad */
 }
 
-/* Línea decorativa superior */
+/* Línea decorativa superior cian */
 .controller.ds4 .touchpad::before {
     content: "";
     position: absolute;
-    top: 6px; left: 50%; transform: translateX(-50%);
+    top: 8px; left: 50%; transform: translateX(-50%);
     width: 50%; height: 3px;
-    background: var(--neon-cyan);
-    box-shadow: 0 0 8px var(--neon-cyan);
+    background: #06b6d4;
+    box-shadow: 0 0 10px #06b6d4;
     z-index: 20;
 }
 
@@ -54,90 +51,56 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     
-    width: 60px; height: 60px;
+    width: 65px; height: 65px;
     border-radius: 50%;
-    background: var(--neon-cyan);
+    background: #06b6d4;
     color: #fff;
     
-    font-family: Arial, sans-serif;
-    font-size: 42px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 48px;
     font-weight: 900;
     text-align: center;
-    line-height: 65px; /* Centrado vertical robusto */
+    line-height: 70px; 
     
-    box-shadow: 0 0 15px var(--neon-cyan-glow);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
     z-index: 20;
     pointer-events: none;
 }
 
-/* 4. D-PAD (Cruceta Morada, SIN BLANCO) */
-/* Forzamos el color de relleno de los SVG del D-Pad */
-.controller.ds4 .dpad path,
-.controller.ds4 .dpad polygon,
-.controller.ds4 .dpad rect {
-    fill: var(--neon-purple) !important;
-    stroke: var(--neon-cyan) !important;
-    stroke-width: 1px;
-}
+/* 5. BOTONES DE ACCIÓN (Colores Originales Restaurados)
+   Como usamos filtro global, los botones se ven morados. 
+   Los reseteamos aquí para que tengan sus colores reales. */
+   
+/* Triángulo (Verde) */
+.controller.ds4 .button.triangle { filter: hue-rotate(90deg) brightness(1.2) !important; }
+/* Círculo (Rojo) */
+.controller.ds4 .button.circle { filter: hue-rotate(0deg) saturate(2) brightness(1.2) !important; }
+/* Cruz (Azul) */
+.controller.ds4 .button.cross { filter: hue-rotate(180deg) brightness(1.2) !important; }
+/* Cuadrado (Rosa) */
+.controller.ds4 .button.square { filter: hue-rotate(300deg) brightness(1.2) !important; }
 
-/* Al presionar: se vuelve Cian brillante */
-.controller.ds4 .dpad.pressed path,
-.controller.ds4 .dpad.pressed polygon {
-    fill: var(--neon-cyan) !important;
-    filter: drop-shadow(0 0 5px var(--neon-cyan));
-}
-
-/* 5. BOTONES DE ACCIÓN (Colores Originales sobre Negro) */
-/* Base negra para todos los botones */
+/* Asegurar que los fondos de los botones sean oscuros/negros */
 .controller.ds4 .abxy .button {
-    background-color: #000 !important;
-    border: 2px solid #333 !important;
+    background-color: #111 !important;
+    border: 2px solid rgba(255,255,255,0.2) !important;
 }
 
-/* Recolorear los iconos SVG internos usando filtros o fill directo */
-/* Triángulo -> Verde */
-.controller.ds4 .button.triangle path { fill: #4ade80 !important; }
-.controller.ds4 .button.triangle { border-color: #4ade80 !important; }
-
-/* Círculo -> Rojo */
-.controller.ds4 .button.circle path { fill: #f87171 !important; }
-.controller.ds4 .button.circle { border-color: #f87171 !important; }
-
-/* Cruz -> Azul */
-.controller.ds4 .button.cross path { fill: #60a5fa !important; }
-.controller.ds4 .button.cross { border-color: #60a5fa !important; }
-
-/* Cuadrado -> Rosa */
-.controller.ds4 .button.square path { fill: #f472b6 !important; }
-.controller.ds4 .button.square { border-color: #f472b6 !important; }
-
-/* Efecto Pressed en botones de acción */
-.controller.ds4 .abxy .button.pressed {
-    filter: brightness(1.3) drop-shadow(0 0 5px currentColor);
+/* 6. D-PAD (Cruceta Morada Oscura) */
+.controller.ds4 .dpad {
+    filter: brightness(0.8) !important; /* Un poco más oscuro que el cuerpo */
+}
+.controller.ds4 .dpad.pressed {
+    filter: brightness(1.5) drop-shadow(0 0 5px #06b6d4) !important; /* Brilla al presionar */
 }
 
-/* 6. JOYSTICKS (Morados con borde Cian) */
+/* 7. STICKS (Joysticks) */
 .controller.ds4 .stick {
-    background-color: #1a1a20 !important;
-    border: 2px solid var(--neon-purple) !important;
-    box-shadow: 0 0 5px rgba(109, 40, 217, 0.5);
+    background-color: #2e1065 !important; /* Morado oscuro */
+    border: 2px solid #06b6d4 !important; /* Borde cian */
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
 }
-
 .controller.ds4 .stick.pressed {
-    border-color: var(--neon-cyan) !important;
-    box-shadow: 0 0 10px var(--neon-cyan);
-    background-color: var(--neon-purple) !important;
-}
-
-/* 7. BUMPERS Y TRIGGERS */
-.controller.ds4 .bumper, 
-.controller.ds4 .trigger {
-    background-color: var(--neon-purple) !important;
-    border-bottom: 2px solid var(--neon-cyan);
-}
-
-.controller.ds4 .bumper.pressed,
-.controller.ds4 .trigger.pressed {
-    background-color: var(--neon-cyan) !important;
-    box-shadow: 0 0 10px var(--neon-cyan);
+    background-color: #06b6d4 !important; /* Se vuelve cian al presionar */
+    box-shadow: 0 0 15px #06b6d4;
 }

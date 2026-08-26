@@ -1,0 +1,138 @@
+/* ==========================================
+   GAMEPAD VIEWER - DS4 SKIN NEGRA + CIAN + LOGO "A"
+   Versión Optimizada y Corregida
+   ========================================== */
+
+/* 1. VARIABLES DE COLOR */
+.controller.ds4 {
+    --cyan-main: #22d3ee;       /* Azul cian brillante */
+    --cyan-dark: #0891b2;       /* Cian oscuro para sombras */
+    --black-body: #0a0b0d;      /* Negro profundo del cuerpo */
+    --black-light: #15171a;     /* Gris muy oscuro para detalles */
+}
+
+/* 2. CUERPO DEL MANDO (Negro Mate) */
+/* Usamos selectores amplios para asegurar que todo el mando se pinte */
+.controller.ds4 .body,
+.controller.ds4 .face,
+.controller.ds4 .grip-left,
+.controller.ds4 .grip-right {
+    background-color: var(--black-body) !important;
+    fill: var(--black-body) !important; /* Para SVGs */
+}
+
+/* Borde exterior sutil para definir la forma */
+.controller.ds4 {
+    filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.2));
+}
+
+/* 3. LIGHTBAR (Barra Superior Cian) */
+.controller.ds4 .lightbar {
+    background: var(--cyan-main) !important;
+    box-shadow: 
+        0 0 10px var(--cyan-main), 
+        0 0 20px var(--cyan-main) !important;
+    opacity: 1 !important;
+}
+
+/* 4. TOUCHPAD Y LOGO "A" (CORREGIDO) */
+.controller.ds4 .touchpad {
+    background-color: #050505 !important; /* Casi negro puro */
+    border: 1px solid rgba(34, 211, 238, 0.3) !important;
+    position: relative !important; /* Vital para posicionar el logo */
+    overflow: hidden !important;
+}
+
+/* Línea decorativa superior del touchpad */
+.controller.ds4 .touchpad::before {
+    content: "";
+    position: absolute;
+    top: 6px; left: 50%; transform: translateX(-50%);
+    width: 50%; height: 2px;
+    background: var(--cyan-main);
+    box-shadow: 0 0 8px var(--cyan-main);
+    z-index: 15;
+    pointer-events: none;
+}
+
+/* LOGO "A" CENTRADO - SIN FLEXBOX */
+.controller.ds4 .touchpad::after {
+    content: "A";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--cyan-main);
+    
+    /* Centrado perfecto sin flexbox */
+    text-align: center;
+    line-height: 65px; 
+    
+    color: #ffffff;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* 5. D-PAD (Cruceta Oscura) */
+.controller.ds4 .dpad path,
+.controller.ds4 .dpad polygon {
+    fill: var(--black-light) !important;
+    stroke: rgba(34, 211, 238, 0.2) !important;
+}
+.controller.ds4 .dpad.pressed path {
+    fill: var(--cyan-main) !important;
+    filter: drop-shadow(0 0 5px var(--cyan-main));
+}
+
+/* 6. BOTONES DE ACCIÓN (Colores Originales sobre Negro) */
+.controller.ds4 .abxy .button {
+    background-color: #000 !important;
+    border: 2px solid #222 !important;
+}
+
+/* Colores específicos de iconos SVG */
+.controller.ds4 .button.triangle path { fill: #4ade80 !important; } /* Verde */
+.controller.ds4 .button.circle path { fill: #f87171 !important; }   /* Rojo */
+.controller.ds4 .button.cross path { fill: #60a5fa !important; }    /* Azul */
+.controller.ds4 .button.square path { fill: #f472b6 !important; }   /* Rosa */
+
+/* Bordes de botones a juego */
+.controller.ds4 .button.triangle { border-color: #4ade80 !important; }
+.controller.ds4 .button.circle { border-color: #f87171 !important; }
+.controller.ds4 .button.cross { border-color: #60a5fa !important; }
+.controller.ds4 .button.square { border-color: #f472b6 !important; }
+
+/* Efecto al presionar */
+.controller.ds4 .abxy .button.pressed {
+    filter: brightness(1.5) drop-shadow(0 0 5px currentColor);
+}
+
+/* 7. JOYSTICKS (Estilo Neón) */
+.controller.ds4 .stick {
+    background-color: #111 !important;
+    border: 2px solid var(--cyan-dark) !important;
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.2);
+}
+.controller.ds4 .stick.pressed {
+    border-color: var(--cyan-main) !important;
+    box-shadow: 0 0 10px var(--cyan-main);
+}
+
+/* 8. BUMPERS Y TRIGGERS */
+.controller.ds4 .bumper, 
+.controller.ds4 .trigger {
+    background-color: var(--black-light) !important;
+    border-bottom: 2px solid var(--cyan-dark);
+}
+.controller.ds4 .bumper.pressed,
+.controller.ds4 .trigger.pressed {
+    background-color: var(--cyan-main) !important;
+    box-shadow: 0 0 10px var(--cyan-main);
+}

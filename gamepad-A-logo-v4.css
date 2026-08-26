@@ -1,0 +1,173 @@
+/* GAMEPAD VIEWER PS4 - A AZUL
+   V4: incluye la estructura PS4 con URLs ABSOLUTAS para que no desaparezca el mando.
+*/
+
+/* ===== BASE PS4 ===== */
+.controller.ds4 {
+    background: url(https://gamepadviewer.com/ps4-assets/base.svgz) !important;
+    height: 598px;
+    width: 806px;
+}
+
+.ds4.disconnected {
+    background: url(https://gamepadviewer.com/ps4-assets/disconnected.svgz) !important;
+}
+.ds4.disconnected div { display: none; }
+
+.ds4 .triggers {
+    width: 588px; height: 90px; position: absolute; left: 109px;
+}
+.ds4 .trigger {
+    width: 99px; height: 100%;
+    background: url(https://gamepadviewer.com/ps4-assets/triggers.svgz) !important;
+    opacity: 0;
+}
+.ds4 .trigger.left { float: left; }
+.ds4 .trigger.right { float: right; background-position-x: 99px !important; }
+
+.ds4 .bumper {
+    width: 99px; height: 23px;
+    background: url(https://gamepadviewer.com/ps4-assets/bumper.svgz) no-repeat !important;
+    opacity: 0;
+}
+.ds4 .bumpers {
+    position: absolute; width: 588px; height: 23px; left: 109px; top: 94px;
+}
+.ds4 .bumper.pressed { opacity: 1; }
+.ds4 .bumper.left { float: left; }
+.ds4 .bumper.right { float: right; transform: rotateY(180deg); }
+
+.ds4 .touchpad {
+    width: 262px; height: 151px;
+    position: absolute; left: 272px; top: 122px;
+}
+.ds4 .touchpad.pressed {
+    background: url(https://gamepadviewer.com/ps4-assets/touchpad.svgz) no-repeat center !important;
+}
+
+.ds4 .meta {
+    width: 42px; height: 42px;
+    position: absolute; left: 382px; bottom: 216px;
+}
+.ds4 .meta.pressed {
+    background: url(https://gamepadviewer.com/ps4-assets/meta.svgz) no-repeat center !important;
+}
+
+.ds4 .arrows {
+    position: absolute; width: 352px; height: 46px; top: 142px; left: 227px;
+}
+.ds4 .back, .ds4 .start {
+    background: url(https://gamepadviewer.com/ps4-assets/start.svgz) !important;
+    width: 28px; height: 46px; opacity: 0;
+}
+.ds4 .back.pressed, .ds4 .start.pressed { opacity: 1; }
+.ds4 .back { float: left; }
+.ds4 .start { float: right; background-position: 28px 0 !important; }
+
+.ds4 .abxy {
+    position: absolute; width: 170px; height: 171px; top: 159px; left: 567px;
+}
+.ds4 .button {
+    position: absolute; width: 55px; height: 55px;
+    background: url(https://gamepadviewer.com/ps4-assets/face.svgz) !important;
+}
+.ds4 .button.pressed { background-position-y: 55px !important; }
+.ds4 .a { background-position: 0 0 !important; bottom: 0; left: 58px; }
+.ds4 .b { background-position: -57px 0 !important; top: 58px; right: 0; }
+.ds4 .x { background-position: -113px 0 !important; top: 58px; }
+.ds4 .y { background-position: 55px 0 !important; left: 58px; }
+
+.ds4 .sticks {
+    position: absolute; width: 361px; height: 105px; top: 308px; left: 228px;
+}
+.ds4 .stick {
+    position: absolute;
+    background: url(https://gamepadviewer.com/ps4-assets/sticks.svgz) !important;
+    height: 94px; width: 94px;
+}
+.ds4 .stick.pressed.left { background-position-x: -96px !important; }
+.ds4 .stick.pressed.right { background-position-x: -192px !important; }
+.ds4 .stick.left { top: 0; left: 0; }
+.ds4 .stick.right { top: calc(100% - 105px); left: calc(100% - 105px); }
+
+.ds4 .dpad {
+    position: absolute; width: 125px; height: 126px; top: 181px; left: 92px;
+}
+.ds4 .face {
+    background: url(https://gamepadviewer.com/ps4-assets/dpad.svgz) !important;
+    position: absolute;
+}
+.ds4 .face.up, .ds4 .face.down { width: 36px; height: 52px; }
+.ds4 .face.left, .ds4 .face.right { width: 52px; height: 36px; }
+.ds4 .face.up { left: 44px; top: 0; background-position: -37px 0 !important; }
+.ds4 .face.down { left: 44px; bottom: 0; background-position: 0 0 !important; }
+.ds4 .face.left { top: 45px; left: 0; background-position: 104px 0 !important; }
+.ds4 .face.right { top: 45px; right: 0; background-position: 52px 0 !important; }
+.ds4 .face.pressed { background-position-y: 52px !important; }
+
+/* ===== A / LOGO ===== */
+.controller.ds4.edit {
+    --a-blue: #18a9d8;
+    --a-blue-light: #55d8f4;
+}
+
+/* Do NOT replace the body image. Only tint the existing controller very subtly. */
+.controller.ds4.edit::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: inset 0 0 30px rgba(24,169,216,.08);
+}
+
+/* A on touchpad */
+.controller.ds4.edit .touchpad::before {
+    content: "A";
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #55d8f4, #18a9d8);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 0 12px rgba(24,169,216,.45),
+                inset 0 2px 6px rgba(255,255,255,.22);
+    pointer-events: none;
+}
+
+.controller.ds4.edit .touchpad::after {
+    content: "";
+    position: absolute;
+    z-index: 20;
+    left: 45px;
+    right: 45px;
+    top: 8px;
+    height: 4px;
+    border-radius: 5px;
+    background: #55d8f4;
+    box-shadow: 0 0 8px #55d8f4;
+    pointer-events: none;
+}
+
+/* Blue pressed glow, without changing geometry */
+.controller.ds4.edit .button.pressed,
+.controller.ds4.edit .bumper.pressed,
+.controller.ds4.edit .trigger.pressed,
+.controller.ds4.edit .face.pressed {
+    filter: drop-shadow(0 0 5px #55d8f4) !important;
+}
+
+.controller.ds4.edit .meta.pressed {
+    filter: drop-shadow(0 0 7px #55d8f4) !important;
+}

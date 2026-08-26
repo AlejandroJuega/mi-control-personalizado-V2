@@ -1,0 +1,226 @@
+/* =========================================================
+   GAMEPAD VIEWER - PS4 / DS4
+   SKIN "A" AZUL / NEGRO
+   Usar con: ?p=1&s=5&editcss=URL_DEL_ARCHIVO
+   ========================================================= */
+
+/* ---------- PALETA ---------- */
+.controller.edit.ds4,
+.controller.ds4.edit {
+    --a-blue: #18a9d8;
+    --a-blue-light: #55d8f4;
+    --a-blue-dark: #0879a7;
+    --a-black: #080a0c;
+}
+
+/* ---------- CUERPO ---------- */
+/* Mantiene la silueta original de PS4, con un tinte azul
+   muy suave para que el negro siga predominando. */
+.controller.edit.ds4,
+.controller.ds4.edit {
+    background-image:
+        linear-gradient(rgba(24,169,216,.10), rgba(24,169,216,.10)),
+        url(https://schoettner.github.io/skins/base-custom.png) !important;
+    background-blend-mode: screen, normal;
+}
+
+/* ---------- TOUCHPAD ---------- */
+/* El touchpad queda oscuro y con una A blanca dentro
+   de un círculo azul. */
+.controller.edit.ds4 .touchpad,
+.controller.ds4.edit .touchpad {
+    position: absolute;
+    background-color: rgba(8,10,12,.35);
+    border-radius: 14px;
+}
+
+/* Logo A */
+.controller.edit.ds4 .touchpad::before,
+.controller.ds4.edit .touchpad::before {
+    content: "A";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(145deg, var(--a-blue-light), var(--a-blue));
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+
+    box-shadow:
+        0 0 12px rgba(24,169,216,.45),
+        inset 0 2px 8px rgba(255,255,255,.18);
+}
+
+/* Línea azul superior del touchpad */
+.controller.edit.ds4 .touchpad::after,
+.controller.ds4.edit .touchpad::after {
+    content: "";
+    position: absolute;
+    left: 38px;
+    right: 38px;
+    top: 8px;
+    height: 4px;
+    border-radius: 10px;
+
+    background: var(--a-blue-light);
+    box-shadow: 0 0 10px var(--a-blue);
+}
+
+/* ---------- D-PAD ---------- */
+.controller.edit.ds4 .dpad,
+.controller.ds4.edit .dpad {
+    background-image: url(https://schoettner.github.io/skins/dpad-custom.png) !important;
+}
+
+/* Aro azul alrededor del D-pad */
+.controller.edit.ds4 .dpad::after,
+.controller.ds4.edit .dpad::after {
+    content: "";
+    position: absolute;
+    left: -13px;
+    top: -13px;
+    width: 151px;
+    height: 152px;
+    border-radius: 50%;
+    border: 7px solid var(--a-blue);
+    box-shadow: 0 0 10px rgba(24,169,216,.25);
+    pointer-events: none;
+}
+
+/* ---------- STICKS ---------- */
+.controller.edit.ds4 .stick,
+.controller.ds4.edit .stick {
+    background-image: url(https://schoettner.github.io/skins/sticks-custom.png) !important;
+}
+
+/* ---------- BOTONES △ □ ○ × ---------- */
+/* Círculo azul detrás del grupo */
+.controller.edit.ds4 .abxy::before,
+.controller.ds4.edit .abxy::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(24,169,216,.92) 0%,
+        rgba(8,121,167,.92) 72%,
+        rgba(8,121,167,0) 73%
+    );
+
+    z-index: -1;
+}
+
+/* ---------- BOTONES PRESIONADOS ---------- */
+.controller.edit.ds4 .button.pressed,
+.controller.ds4.edit .button.pressed {
+    filter:
+        drop-shadow(0 0 5px var(--a-blue-light))
+        drop-shadow(0 0 12px var(--a-blue));
+}
+
+/* ---------- L1 / R1 ---------- */
+.controller.edit.ds4 .bumper.pressed,
+.controller.ds4.edit .bumper.pressed {
+    filter:
+        drop-shadow(0 0 5px var(--a-blue-light))
+        drop-shadow(0 0 12px var(--a-blue));
+}
+
+/* ---------- L2 / R2 ---------- */
+.controller.edit.ds4 .trigger,
+.controller.ds4.edit .trigger {
+    filter: none;
+}
+
+.controller.edit.ds4 .trigger.pressed,
+.controller.ds4.edit .trigger.pressed {
+    opacity: .9 !important;
+    filter:
+        drop-shadow(0 0 7px var(--a-blue-light))
+        drop-shadow(0 0 14px var(--a-blue));
+}
+
+/* ---------- BOTÓN PS ---------- */
+.controller.edit.ds4 .meta.pressed,
+.controller.ds4.edit .meta.pressed {
+    filter:
+        drop-shadow(0 0 6px var(--a-blue-light))
+        drop-shadow(0 0 14px var(--a-blue));
+}
+
+/* ---------- BOTONES SHARE / OPTIONS ---------- */
+.controller.edit.ds4 .back.pressed,
+.controller.edit.ds4 .start.pressed,
+.controller.ds4.edit .back.pressed,
+.controller.ds4.edit .start.pressed {
+    filter:
+        drop-shadow(0 0 5px var(--a-blue-light))
+        drop-shadow(0 0 10px var(--a-blue));
+}
+
+/* ---------- TOUCHPAD AL PULSAR ---------- */
+.controller.edit.ds4 .touchpad.pressed,
+.controller.ds4.edit .touchpad.pressed {
+    box-shadow:
+        inset 0 0 18px rgba(24,169,216,.25),
+        0 0 15px rgba(24,169,216,.45);
+}
+
+.controller.edit.ds4 .touchpad.pressed::before,
+.controller.ds4.edit .touchpad.pressed::before {
+    box-shadow:
+        0 0 15px var(--a-blue-light),
+        0 0 30px rgba(24,169,216,.7),
+        inset 0 2px 8px rgba(255,255,255,.2);
+}
+
+/* ---------- LUZ AZUL GENERAL ---------- */
+.controller.edit.ds4::after,
+.controller.ds4.edit::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 80px;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 40px;
+
+    background: var(--a-blue);
+    opacity: .16;
+    filter: blur(28px);
+    pointer-events: none;
+}
+
+/* ---------- EVITAR QUE LOS OVERLAYS BLOQUEEN INPUTS ---------- */
+.controller.edit.ds4::before,
+.controller.edit.ds4::after,
+.controller.edit.ds4 .touchpad::before,
+.controller.edit.ds4 .touchpad::after,
+.controller.edit.ds4 .dpad::after,
+.controller.edit.ds4 .abxy::before,
+.controller.ds4.edit::before,
+.controller.ds4.edit::after,
+.controller.ds4.edit .touchpad::before,
+.controller.ds4.edit .touchpad::after,
+.controller.ds4.edit .dpad::after,
+.controller.ds4.edit .abxy::before {
+    pointer-events: none;
+}

@@ -1,0 +1,192 @@
+/* =========================================================
+   GAMEPAD VIEWER PS4 - SKIN A / AZUL
+   V3 - SEGURA
+   IMPORTANTE: NO reemplaza la imagen original del mando.
+   Solo añade detalles encima de la skin PS4 de Gamepad Viewer.
+   ========================================================= */
+
+.controller.ds4.edit {
+    --a-blue: #18a9d8;
+    --a-blue-light: #55d8f4;
+}
+
+/* ---------------------------------------------------------
+   BORDE / AMBIENTE AZUL
+   No toca la imagen original ni cambia su geometría.
+   --------------------------------------------------------- */
+
+.controller.ds4.edit {
+    box-shadow:
+        0 0 0 2px rgba(24,169,216,.18),
+        0 0 24px rgba(24,169,216,.12);
+}
+
+/* ---------------------------------------------------------
+   TOUCHPAD
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .touchpad::before {
+    content: "A";
+    position: absolute;
+    z-index: 20;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        var(--a-blue-light),
+        var(--a-blue)
+    );
+
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1;
+
+    box-shadow:
+        0 0 12px rgba(24,169,216,.45),
+        inset 0 2px 6px rgba(255,255,255,.22);
+
+    pointer-events: none;
+}
+
+/* Línea azul superior del touchpad */
+.controller.ds4.edit .touchpad::after {
+    content: "";
+    position: absolute;
+    z-index: 20;
+
+    left: 45px;
+    right: 45px;
+    top: 8px;
+
+    height: 4px;
+    border-radius: 5px;
+
+    background: var(--a-blue-light);
+
+    box-shadow: 0 0 8px var(--a-blue-light);
+
+    pointer-events: none;
+}
+
+/* Al tocar el touchpad */
+.controller.ds4.edit .touchpad.pressed::before {
+    box-shadow:
+        0 0 16px var(--a-blue-light),
+        0 0 28px rgba(24,169,216,.7),
+        inset 0 2px 6px rgba(255,255,255,.25);
+}
+
+/* ---------------------------------------------------------
+   D-PAD
+   Solo recoloriza los reflejos de la imagen original.
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .dpad .face {
+    filter:
+        sepia(.55)
+        saturate(2)
+        hue-rotate(145deg);
+}
+
+.controller.ds4.edit .dpad .face.pressed {
+    filter:
+        sepia(.8)
+        saturate(4)
+        hue-rotate(145deg)
+        brightness(1.2)
+        drop-shadow(0 0 5px var(--a-blue-light));
+}
+
+/* ---------------------------------------------------------
+   STICKS
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .stick {
+    filter:
+        sepia(.35)
+        saturate(1.4)
+        hue-rotate(145deg);
+}
+
+.controller.ds4.edit .stick.pressed {
+    filter:
+        sepia(.8)
+        saturate(4)
+        hue-rotate(145deg)
+        brightness(1.15)
+        drop-shadow(0 0 7px var(--a-blue-light));
+}
+
+/* ---------------------------------------------------------
+   L1 / R1
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .bumper.pressed {
+    filter:
+        sepia(.7)
+        saturate(3)
+        hue-rotate(145deg)
+        brightness(1.15)
+        drop-shadow(0 0 6px var(--a-blue-light));
+}
+
+/* ---------------------------------------------------------
+   L2 / R2
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .trigger.pressed {
+    filter:
+        sepia(.7)
+        saturate(3)
+        hue-rotate(145deg)
+        brightness(1.1)
+        drop-shadow(0 0 6px var(--a-blue-light));
+}
+
+/* ---------------------------------------------------------
+   BOTÓN PS
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .meta.pressed {
+    background-color: rgba(24,169,216,.75) !important;
+    border-radius: 50%;
+    box-shadow:
+        0 0 8px var(--a-blue-light),
+        0 0 16px rgba(24,169,216,.55);
+}
+
+/* ---------------------------------------------------------
+   SHARE / OPTIONS
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .back.pressed,
+.controller.ds4.edit .start.pressed {
+    filter:
+        drop-shadow(0 0 5px var(--a-blue-light));
+}
+
+/* ---------------------------------------------------------
+   BOTONES DE CARA
+   NO se cambia su imagen ni su posición.
+   Solo brillo azul al pulsarlos.
+   --------------------------------------------------------- */
+
+.controller.ds4.edit .button.pressed {
+    filter:
+        drop-shadow(0 0 5px var(--a-blue-light))
+        drop-shadow(0 0 10px rgba(24,169,216,.55));
+}
